@@ -16,6 +16,10 @@
 require_once 'crac.civix.php';
 use CRM_Crac_ExtensionUtil as E;
 
+function crac_civicrm_buildForm($formName, &$form) {
+  CRM_Crac_Monitor::buildFormHook($formName, $form);
+}
+
 /**
  * Don't log CRAC data
  */
