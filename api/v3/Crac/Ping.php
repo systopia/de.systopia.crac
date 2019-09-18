@@ -19,7 +19,7 @@
 function civicrm_api3_crac_ping($params) {
   $resource = new CRM_Crac_Resource($params['entity_table'], $params['entity_id'], $params['ttl']);
   $resource->ping(CRM_Utils_Array::value('contact_id', $params, NULL));
-  $uses = $resource->getUsers(CRM_Utils_Array::value('contact_id', $params, TRUE));
+  $uses = $resource->getUsers(CRM_Utils_Array::value('contact_id', $params, CRM_Core_Session::getLoggedInContactID()));
   return civicrm_api3_create_success($uses);
 }
 
