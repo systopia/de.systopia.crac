@@ -31,18 +31,6 @@ function crac_civicrm_alterAngular(&$angular) {
 }
 
 /**
- * Fallback angular injection, old versions don't call civicrm_alterAngular
- * @param $page
- */
-function crac_civicrm_pageRun(&$page) {
-  $pageName = $page->getVar('_name');
-  if ($pageName == 'Civi\Angular\Page\Main') {
-    CRM_Crac_Monitor::injectMosaicoMailMonitor();
-  }
-}
-
-
-/**
  * Don't log CRAC data
  */
 function crac_civicrm_alterLogTables(&$logTableSpec) {

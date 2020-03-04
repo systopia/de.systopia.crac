@@ -29,11 +29,11 @@ let mosaico_ping_loop = null;
  */
 function crac_mosaico_ping() {
     // check if we're editing a mailing by investigating the URL
-    let match = document.location.href.match(/civicrm\/a\/#\/mailing\/(?<mailing_id>[0-9]+)/);
+    let match = document.location.href.match('/civicrm\/a\/#\/mailing\/(\\d+)');
     if (match) {
         // we're currently editing a mailing -> run a ping
         let crac_ping = {
-            entity_id: match.groups.mailing_id,
+            entity_id: match[1],
             entity_table: 'civicrm_mailing',
             'interval': CRM.vars.CracMosaicoMonitor.interval
         };
