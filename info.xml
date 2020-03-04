@@ -2,7 +2,7 @@
 <extension key="de.systopia.crac" type="module">
   <file>crac</file>
   <name>Concurrent Resource Access Control</name>
-  <description>Will issue warnings when multiple users are about to edit the same resource.</description>
+  <description>Will issue warnings when multiple users are about to edit or access the same resource.</description>
   <license>AGPL-3.0</license>
   <maintainer>
     <author>SYSTOPIA</author>
