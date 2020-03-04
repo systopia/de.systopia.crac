@@ -25,7 +25,7 @@ let mosaico_ping_loop = null;
  * execute a resource ping and show a warning if there is an issue
  *
  * remark: we have to keep the ping going even if the dialogue is up,
- *   since the ping also reports us using the resource
+ *   since the ping also reports _us_ using the resource
  */
 function crac_mosaico_ping() {
     // check if we're editing a mailing by investigating the URL
@@ -35,7 +35,7 @@ function crac_mosaico_ping() {
         let crac_ping = {
             entity_id: match.groups.mailing_id,
             entity_table: 'civicrm_mailing',
-            'interval': 1000
+            'interval': CRM.vars.CracMosaicoMonitor.interval
         };
 
         CRM.api3('Crac', 'ping', crac_ping)
@@ -45,13 +45,13 @@ function crac_mosaico_ping() {
                     if (mosaico_crac_dialogue == null) {
                         // there is no dialogue yet => create one!
                         mosaico_crac_dialogue = CRM.confirm({
-                            title: ts('Mailing Currently Edited!'),
+                            title: CRM.vars.CracMosaicoMonitor.dialogue_title,
                             resizable: false,
                             message: '<div class="crm-custom-image-popup">' + result.values.html_text + '</div>',
                             options: {
-                                check: "Check Again",
-                                abort: "Abort",
-                                no: "Ignore"},
+                                check: CRM.vars.CracMosaicoMonitor.dialogue_check,
+                                abort: CRM.vars.CracMosaicoMonitor.dialogue_abort,
+                                no: CRM.vars.CracMosaicoMonitor.dialogue_ignore},
 
                         }).on('crmConfirm:check', function() {
                             // user picked 'Check Again' => close dialogue and run ping
@@ -71,8 +71,8 @@ function crac_mosaico_ping() {
                             mosaico_crac_dialogue = null;
                             clearInterval(mosaico_ping_loop);
                             CRM.alert(
-                                "Hope you know what you're doing",
-                                "Warning: Concurrent Editing",
+                                CRM.vars.CracMosaicoMonitor.ignore_text,
+                                CRM.vars.CracMosaicoMonitor.ignore_title,
                                 "warn"
                                 );
                         });
@@ -83,6 +83,6 @@ function crac_mosaico_ping() {
 }
 
 cj(document).ready(function() {
-    mosaico_ping_loop = setInterval(crac_mosaico_ping, 5000);
+    mosaico_ping_loop = setInterval(crac_mosaico_ping, CRM.vars.CracMosaicoMonitor.interval);
     crac_mosaico_ping();
 });

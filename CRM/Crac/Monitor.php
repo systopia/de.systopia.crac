@@ -20,20 +20,30 @@ use CRM_Crac_ExtensionUtil as E;
 class CRM_Crac_Monitor {
 
   /**
-   * Add a simple JS monitor for the given resource
-   *
-   * @param $entity_id      integer resource ID
-   * @param $entity_table   string  resource type
-   * @param $interval       integer ping interval in milliseconds
+   * Inject Mosaico Mail monitor
    */
-  public static function injectSimpleMonitor($entity_id, $entity_table, $interval = 5000) {
-    self::injectMonitor("return {entity_id:{$entity_id}, entity_table:'{$entity_table}', interval: {$interval}};");
+  public static function injectMosaicoMailMonitor() {
+    // TODO: check if enabled
+
+    // inject resources
+    CRM_Core_Resources::singleton()->addVars('CracMosaicoMonitor', [
+        'interval'        => 1000,
+        'dialogue_title'  => E::ts("Concurrent Edit Detected!"),
+        'dialogue_check'  => E::ts("Check Again"),
+        'dialogue_abort'  => E::ts("Go Back"),
+        'dialogue_ignore' => E::ts("Ignore"),
+        'ignore_title'    => E::ts("!Concurrent Editing!"),
+        'ignore_text'     => E::ts("This Mailing is currently edited multiple times. If multiple people will save their changes, some of it <strong>will be lost</strong>. Hope you know what you're doing."),
+    ]);
+    CRM_Core_Resources::singleton()->addScriptFile('de.systopia.crac', 'js/mosaico_monitor.js');
   }
 
   /**
    * Add a simple JS monitor for the given resource
    *
    * @param $resource_snippet string JS code the generates a structure
+   *
+   * @deprecated
    */
   public static function injectMonitor($resource_snippet) {
     $monitor_code = file_get_contents(E::path('js/simple_monitor.js'));
@@ -41,10 +51,13 @@ class CRM_Crac_Monitor {
     Civi::resources()->addScript($monitor_code);
   }
 
-  public static function buildFormHook($formName, $form) {
-    if ($formName == 'CRM_Contribute_Form_Contribution') {
-      // todo: configurable
-      self::injectSimpleMonitor($form->_id, 'civicrm_contribution');
-    }
+  /**
+   * Triggered by buildForm hook, injects configured monitors
+   *
+   * @param $formName string name of the form
+   * @param $form     CRM_Core_Form form object
+   */
+  public static function injectMonitors($formName, $form) {
+    // TODO: inject monitors?
   }
 }
