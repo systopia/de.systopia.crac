@@ -23,6 +23,14 @@ class CRM_Crac_Monitor {
    * Inject Mosaico Mail monitor
    */
   public static function injectMosaicoMailMonitor() {
+    // make sure this is only executed once
+    static $injection_tried = false;
+    if ($injection_tried) {
+      return;
+    } else {
+      $injection_tried = true;
+    }
+
     $interval = (int) Civi::settings()->get('crac_mosaico_mailing_monitor');
     if ($interval) { // interval 0 means 'disabled'
       // inject resources
