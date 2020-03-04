@@ -121,7 +121,7 @@ class CRM_Crac_Resource {
     // calculate the string
     if (!empty($data)) {
       if (count($data) == 1) {
-        $data['html_text'] = E::ts("This resource is concurrently accessed/edited by contact %1", [1 => $data[0]['text']]);
+        $data['html_text'] = E::ts("This resource is concurrently accessed/edited by contact %1", [1 => reset($data)['text']]);
       } else {
         $data['html_text'] = E::ts("This resource is concurrently accessed/edited by %1 other contacts:", [1 => count($data)]);
         $data['html_text'] .= "<ul>";

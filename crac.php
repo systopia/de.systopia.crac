@@ -16,9 +16,18 @@
 require_once 'crac.civix.php';
 use CRM_Crac_ExtensionUtil as E;
 
-function crac_civicrm_buildForm($formName, &$form) {
-  CRM_Crac_Monitor::buildFormHook($formName, $form);
+
+/**
+ * @param $angular \Civi\Angular\Manager
+ */
+function crac_civicrm_alterAngular(&$angular) {
+  $angular_modules = $angular->getModules();
+  if (isset($angular_modules['crmMosaico'])) {
+    // TODO: check setting
+    CRM_Core_Resources::singleton()->addScriptFile('de.systopia.crac', 'js/mosaico_monitor.js');
+  }
 }
+
 
 /**
  * Don't log CRAC data
