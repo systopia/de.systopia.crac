@@ -50,7 +50,7 @@ msgstr "Speichern"
 
 #: CRM/Crac/Monitor.php
 msgid "Concurrent Edit Detected!"
-msgstr "Parallele Bearbeitungs Festgestellt!"
+msgstr "Parallele Bearbeitung Festgestellt!"
 
 #: CRM/Crac/Monitor.php
 msgid "Check Again"
@@ -74,10 +74,10 @@ msgid ""
 "save their changes, some of it <strong>will be lost</strong>. Hope you know "
 "what you're doing."
 msgstr ""
-"Dieses Mailing wirde gerade von mehreren Personen gleichzeitig bearbeitet. "
-"Wenn Sie Änderungen durchführen und speicher, werden entweder Ihre oder "
-"andere Änderungen <strong>überschrieben</strong>. Ich hoffe Sie wissen was "
-"Sie tun."
+"Dieses Mailing wird gerade von mehreren Personen gleichzeitig bearbeitet. "
+"Wenn Sie Änderungen durchführen und speichern, werden entweder Ihre oder "
+"andere Änderungen <strong>überschrieben</strong>. Hoffentlich wissen Sie "
+"was Sie tun."
 
 #: CRM/Crac/Resource.php
 msgid "'%1' <a href=\"%2\" target=\"_blank\">[%3]</a> since %4"
@@ -86,13 +86,13 @@ msgstr "'%1' <a href=\"%2\" target=\"_blank\">[%3]</a> seit %4"
 #: CRM/Crac/Resource.php
 msgid "This resource is concurrently accessed/edited by contact %1"
 msgstr ""
-"Diese Ressource wird gerade von Kontakt  %1 berabeitet bzw. verwendet."
+"Diese Ressource wird gerade von Kontakt  %1 bearbeitet bzw. verwendet."
 
 #: CRM/Crac/Resource.php
 msgid "This resource is concurrently accessed/edited by %1 other contacts:"
 msgstr ""
 "Diese Ressource wird gerade von %1 weiteren Kontakten bearbeitet bzw. "
-"verwendet."
+"verwendet:"
 
 #: CRM/Crac/Upgrader/Base.php
 msgid "Upgrade %1 to revision %2"
