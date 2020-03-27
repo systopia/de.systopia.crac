@@ -46,6 +46,11 @@ function crac_mosaico_ping() {
                         // there is no dialogue yet => create one!
                         mosaico_crac_dialogue = CRM.confirm({
                             title: CRM.vars.CracMosaicoMonitor.dialogue_title,
+                            closeOnEscape: false, // disable 'escape' button
+                            open: function(event, ui) {
+                                // disable 'close' button
+                                cj(".ui-dialog-titlebar-close").hide();
+                            },
                             resizable: false,
                             message: '<div class="crm-custom-image-popup">' + result.values.html_text + '</div>',
                             options: {
