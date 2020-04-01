@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: de.systopia.crac\n"
-"POT-Creation-Date: 2020-03-04 15:11+0100\n"
+"POT-Creation-Date: 2020-04-01 22:09+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: CiviCRM Translators <civicrm-translators@lists.civicrm.org>\n"
@@ -39,6 +39,10 @@ msgstr "%1 Sekunden"
 #: CRM/Crac/Form/Settings.php
 msgid "Tolerance (TTL)"
 msgstr "Toleranz (TTL)"
+
+#: CRM/Crac/Form/Settings.php
+msgid "Allow \"ignore\" option"
+msgstr "\"Ignorieren\" Option Anzeigen"
 
 #: CRM/Crac/Form/Settings.php
 msgid "Mailing Editor (Mosaico)"
@@ -76,8 +80,8 @@ msgid ""
 msgstr ""
 "Dieses Mailing wird gerade von mehreren Personen gleichzeitig bearbeitet. "
 "Wenn Sie Änderungen durchführen und speichern, werden entweder Ihre oder "
-"andere Änderungen <strong>überschrieben</strong>. Hoffentlich wissen Sie "
-"was Sie tun."
+"andere Änderungen <strong>überschrieben</strong>. Hoffentlich wissen Sie was "
+"Sie tun."
 
 #: CRM/Crac/Resource.php
 msgid "'%1' <a href=\"%2\" target=\"_blank\">[%3]</a> since %4"
@@ -85,13 +89,12 @@ msgstr "'%1' <a href=\"%2\" target=\"_blank\">[%3]</a> seit %4"
 
 #: CRM/Crac/Resource.php
 msgid "This resource is concurrently accessed/edited by contact %1"
-msgstr ""
-"Diese Ressource wird gerade von Kontakt  %1 bearbeitet bzw. verwendet."
+msgstr "Diese Ressource wird von Benutzer  %1 bearbeitet bzw. verwendet."
 
 #: CRM/Crac/Resource.php
 msgid "This resource is concurrently accessed/edited by %1 other contacts:"
 msgstr ""
-"Diese Ressource wird gerade von %1 weiteren Kontakten bearbeitet bzw. "
+"Diese Ressource wird gerade von %1 weiteren Benutzern bearbeitet bzw. "
 "verwendet:"
 
 #: CRM/Crac/Upgrader/Base.php
