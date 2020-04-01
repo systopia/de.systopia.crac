@@ -69,6 +69,7 @@ class CRM_Crac_Form_Settings extends CRM_Core_Form {
 
     // set defaults
     $this->setDefaults([
+        'crac_ignore_option'           => (int) Civi::settings()->get('crac_ignore_option'),
         'crac_ttl'                     => (int) Civi::settings()->get('crac_ttl'),
         'crac_mosaico_mailing_monitor' => (int) Civi::settings()->get('crac_mosaico_mailing_monitor'),
     ]);
