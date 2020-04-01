@@ -44,6 +44,16 @@ function crac_mosaico_ping() {
                     // there is a resource conflict!
                     if (mosaico_crac_dialogue == null) {
                         // there is no dialogue yet => create one!
+                        // build user choices
+                        let choices = {
+                            check: CRM.vars.CracMosaicoMonitor.dialogue_check,
+                            abort: CRM.vars.CracMosaicoMonitor.dialogue_abort,
+                        };
+                        if (CRM.vars.CracMosaicoMonitor.dialogue_ignore.length > 0) {
+                            choices['no'] = CRM.vars.CracMosaicoMonitor.dialogue_ignore;
+                        }
+
+                        // build dialogue
                         mosaico_crac_dialogue = CRM.confirm({
                             title: CRM.vars.CracMosaicoMonitor.dialogue_title,
                             closeOnEscape: false, // disable 'escape' button
@@ -53,11 +63,7 @@ function crac_mosaico_ping() {
                             },
                             resizable: false,
                             message: '<div class="crm-custom-image-popup">' + result.values.html_text + '</div>',
-                            options: {
-                                check: CRM.vars.CracMosaicoMonitor.dialogue_check,
-                                abort: CRM.vars.CracMosaicoMonitor.dialogue_abort,
-                                no: CRM.vars.CracMosaicoMonitor.dialogue_ignore},
-
+                            options: choices
                         }).on('crmConfirm:check', function() {
                             // user picked 'Check Again' => close dialogue and run ping
                             mosaico_crac_dialogue = null;

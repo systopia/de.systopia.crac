@@ -45,7 +45,13 @@ class CRM_Crac_Form_Settings extends CRM_Core_Form {
         true
     );
 
-    $this->add(
+      $this->add(
+          'checkbox',
+          'crac_ignore_option',
+          E::ts('Allow "ignore" option')
+      );
+
+      $this->add(
         'select',
         'crac_mosaico_mailing_monitor',
         E::ts('Mailing Editor (Mosaico)'),
@@ -74,6 +80,7 @@ class CRM_Crac_Form_Settings extends CRM_Core_Form {
     $values = $this->exportValues();
 
     // set values
+    Civi::settings()->set('crac_ignore_option',           CRM_Utils_Array::value('crac_ignore_option', $values, 0));
     Civi::settings()->set('crac_ttl',                     CRM_Utils_Array::value('crac_ttl', $values, 0));
     Civi::settings()->set('crac_mosaico_mailing_monitor', CRM_Utils_Array::value('crac_mosaico_mailing_monitor', $values, 0));
 

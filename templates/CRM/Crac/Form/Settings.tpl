@@ -20,6 +20,11 @@
       <div class="clear"></div>
     </div>
     <div class="crm-section">
+      <div class="label">{$form.crac_ignore_option.label}</div>
+      <div class="content">{$form.crac_ignore_option.html}</div>
+      <div class="clear"></div>
+    </div>
+    <div class="crm-section">
       <div class="label">{$form.crac_mosaico_mailing_monitor.label}</div>
       <div class="content">{$form.crac_mosaico_mailing_monitor.html}</div>
       <div class="clear"></div>

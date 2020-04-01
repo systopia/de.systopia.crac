@@ -34,12 +34,13 @@ class CRM_Crac_Monitor {
     $interval = (int) Civi::settings()->get('crac_mosaico_mailing_monitor');
     if ($interval) { // interval 0 means 'disabled'
       // inject resources
+      $ingore_option = (boolean) Civi::settings()->get('crac_ignore_option');
       CRM_Core_Resources::singleton()->addVars('CracMosaicoMonitor', [
           'interval'        => $interval,
           'dialogue_title'  => E::ts("Concurrent Edit Detected!"),
           'dialogue_check'  => E::ts("Check Again"),
           'dialogue_abort'  => E::ts("Go Back"),
-          'dialogue_ignore' => E::ts("Ignore"),
+          'dialogue_ignore' => $ingore_option ? E::ts("Ignore") : '',
           'ignore_title'    => E::ts("Concurrent Editing"),
           'ignore_text'     => E::ts("This Mailing is currently edited multiple times. If multiple people will save their changes, some of it <strong>will be lost</strong>. Hope you know what you're doing."),
       ]);
