@@ -58,11 +58,11 @@ msgstr "Parallele Bearbeitung Festgestellt!"
 
 #: CRM/Crac/Monitor.php
 msgid "Check Again"
-msgstr "Erneut Prüfen"
+msgstr "Erneut prüfen"
 
 #: CRM/Crac/Monitor.php
 msgid "Go Back"
-msgstr "Zurück"
+msgstr "Abbrechen"
 
 #: CRM/Crac/Monitor.php
 msgid "Ignore"
