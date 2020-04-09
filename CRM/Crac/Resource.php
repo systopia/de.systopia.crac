@@ -123,12 +123,13 @@ class CRM_Crac_Resource {
       if (count($data) == 1) {
         $data['html_text'] = E::ts("This resource is concurrently accessed/edited by contact %1", [1 => reset($data)['text']]);
       } else {
-        $data['html_text'] = E::ts("This resource is concurrently accessed/edited by %1 other contacts:", [1 => count($data)]);
-        $data['html_text'] .= "<ul>";
+        $text = E::ts("This resource is concurrently accessed/edited by %1 other contacts:", [1 => count($data)]);
+        $text .= "<ul>";
         foreach ($data as $contact_data) {
-          $data['html_text'] .= "<li>{$contact_data['text']}</li>";
+            $text .= "<li>{$contact_data['text']}</li>";
         }
-        $data['html_text'] .= "</ol>";
+        $text .= "</ul>";
+        $data['html_text'] = $text;
       }
 
       return $data;
