@@ -54,7 +54,7 @@ msgstr "Speichern"
 
 #: CRM/Crac/Monitor.php
 msgid "Concurrent Edit Detected!"
-msgstr "Parallele Bearbeitung Festgestellt!"
+msgstr "Parallele Bearbeitung festgestellt!"
 
 #: CRM/Crac/Monitor.php
 msgid "Check Again"
