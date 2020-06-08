@@ -85,9 +85,16 @@ class CRM_Crac_Resource {
    * Get a structured list of users on this resource
    *
    * @param integer $exclude_contact_id
-   * @return array data structure
+   *    contact ID of users to exclude from the list, most likely the current user
+   *
+   * @param string $access_type
+   *    type of access, one of 'access', 'edit', 'use'
+   *    will only be used for the generated text
+   *
+   * @return array
+   *    data structure containing the usage data / warning
    */
-  public function getUsers($exclude_contact_id = 0) {
+  public function getUsers($exclude_contact_id = 0, $access_type = 'access') {
     // no entry: create a new one
     $query = CRM_Core_DAO::executeQuery("SELECT r.contact_id         AS contact_id, 
                                                       r.using_since        AS using_since, 
@@ -121,9 +128,35 @@ class CRM_Crac_Resource {
     // calculate the string
     if (!empty($data)) {
       if (count($data) == 1) {
-        $data['html_text'] = E::ts("This resource is concurrently accessed/edited by contact %1", [1 => reset($data)['text']]);
+          switch ($access_type) {
+              case 'edit':
+                  $data['html_text'] = E::ts("This resource is concurrently edited by contact %1", [1 => reset($data)['text']]);
+                  break;
+
+              case 'use':
+                  $data['html_text'] = E::ts("This resource is concurrently used by contact %1", [1 => reset($data)['text']]);
+                  break;
+
+              default:
+              case 'access':
+                  $data['html_text'] = E::ts("This resource is concurrently accessed by contact %1", [1 => reset($data)['text']]);
+                  break;
+          }
       } else {
-        $text = E::ts("This resource is concurrently accessed/edited by %1 other contacts:", [1 => count($data)]);
+          switch ($access_type) {
+              case 'edit':
+                  $text = E::ts("This resource is concurrently edited by %1 other contacts:", [1 => count($data)]);
+                  break;
+
+              case 'use':
+                  $text = E::ts("This resource is concurrently used by %1 other contacts:", [1 => count($data)]);
+                  break;
+
+              default:
+              case 'access':
+                  $text = E::ts("This resource is concurrently accessed %1 other contacts:", [1 => count($data)]);
+                  break;
+          }
         $text .= "<ul>";
         foreach ($data as $contact_data) {
             $text .= "<li>{$contact_data['text']}</li>";

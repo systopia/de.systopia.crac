@@ -35,7 +35,8 @@ function crac_mosaico_ping() {
         let crac_ping = {
             entity_id: match[1],
             entity_table: 'civicrm_mailing',
-            'interval': CRM.vars.CracMosaicoMonitor.interval
+            access_type: 'edit',
+            interval: CRM.vars.CracMosaicoMonitor.interval
         };
 
         CRM.api3('Crac', 'ping', crac_ping)
