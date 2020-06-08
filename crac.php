@@ -14,8 +14,8 @@
 
 
 require_once 'crac.civix.php';
-use CRM_Crac_ExtensionUtil as E;
 
+use CRM_Crac_ExtensionUtil as E;
 
 
 /**
@@ -23,28 +23,31 @@ use CRM_Crac_ExtensionUtil as E;
  *
  * @param $angular \Civi\Angular\Manager
  */
-function crac_civicrm_alterAngular(&$angular) {
-  $angular_modules = $angular->getModules();
-  if (isset($angular_modules['crmMosaico'])) {
-    CRM_Crac_Monitor::injectMosaicoMailMonitor();
-  }
+function crac_civicrm_alterAngular(&$angular)
+{
+    $angular_modules = $angular->getModules();
+    if (isset($angular_modules['crmMosaico'])) {
+        CRM_Crac_Monitor::injectMosaicoMailMonitor();
+    }
 }
 
 /**
  * Don't log CRAC data
  */
-function crac_civicrm_alterLogTables(&$logTableSpec) {
-  // disable logging for civicrm_resource_access
-  if (isset($logTableSpec['civicrm_resource_access'])) {
-    unset($logTableSpec['civicrm_resource_access']);
-  }
+function crac_civicrm_alterLogTables(&$logTableSpec)
+{
+    // disable logging for civicrm_resource_access
+    if (isset($logTableSpec['civicrm_resource_access'])) {
+        unset($logTableSpec['civicrm_resource_access']);
+    }
 }
 
 /**
  * CRAC for everyone
  */
-function crac_civicrm_alterAPIPermissions($entity, $action, &$params, &$permissions) {
-  $permissions['crac']['ping'] = ['access CiviCRM'];
+function crac_civicrm_alterAPIPermissions($entity, $action, &$params, &$permissions)
+{
+    $permissions['crac']['ping'] = ['access CiviCRM'];
 }
 
 /**
@@ -52,8 +55,9 @@ function crac_civicrm_alterAPIPermissions($entity, $action, &$params, &$permissi
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_config
  */
-function crac_civicrm_config(&$config) {
-  _crac_civix_civicrm_config($config);
+function crac_civicrm_config(&$config)
+{
+    _crac_civix_civicrm_config($config);
 }
 
 /**
@@ -61,8 +65,9 @@ function crac_civicrm_config(&$config) {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_xmlMenu
  */
-function crac_civicrm_xmlMenu(&$files) {
-  _crac_civix_civicrm_xmlMenu($files);
+function crac_civicrm_xmlMenu(&$files)
+{
+    _crac_civix_civicrm_xmlMenu($files);
 }
 
 /**
@@ -70,8 +75,9 @@ function crac_civicrm_xmlMenu(&$files) {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_install
  */
-function crac_civicrm_install() {
-  _crac_civix_civicrm_install();
+function crac_civicrm_install()
+{
+    _crac_civix_civicrm_install();
 }
 
 /**
@@ -79,8 +85,9 @@ function crac_civicrm_install() {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_postInstall
  */
-function crac_civicrm_postInstall() {
-  _crac_civix_civicrm_postInstall();
+function crac_civicrm_postInstall()
+{
+    _crac_civix_civicrm_postInstall();
 }
 
 /**
@@ -88,8 +95,9 @@ function crac_civicrm_postInstall() {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_uninstall
  */
-function crac_civicrm_uninstall() {
-  _crac_civix_civicrm_uninstall();
+function crac_civicrm_uninstall()
+{
+    _crac_civix_civicrm_uninstall();
 }
 
 /**
@@ -97,8 +105,9 @@ function crac_civicrm_uninstall() {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_enable
  */
-function crac_civicrm_enable() {
-  _crac_civix_civicrm_enable();
+function crac_civicrm_enable()
+{
+    _crac_civix_civicrm_enable();
 }
 
 /**
@@ -106,8 +115,9 @@ function crac_civicrm_enable() {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_disable
  */
-function crac_civicrm_disable() {
-  _crac_civix_civicrm_disable();
+function crac_civicrm_disable()
+{
+    _crac_civix_civicrm_disable();
 }
 
 /**
@@ -115,8 +125,9 @@ function crac_civicrm_disable() {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_upgrade
  */
-function crac_civicrm_upgrade($op, CRM_Queue_Queue $queue = NULL) {
-  return _crac_civix_civicrm_upgrade($op, $queue);
+function crac_civicrm_upgrade($op, CRM_Queue_Queue $queue = null)
+{
+    return _crac_civix_civicrm_upgrade($op, $queue);
 }
 
 /**
@@ -127,8 +138,9 @@ function crac_civicrm_upgrade($op, CRM_Queue_Queue $queue = NULL) {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_managed
  */
-function crac_civicrm_managed(&$entities) {
-  _crac_civix_civicrm_managed($entities);
+function crac_civicrm_managed(&$entities)
+{
+    _crac_civix_civicrm_managed($entities);
 }
 
 /**
@@ -140,8 +152,9 @@ function crac_civicrm_managed(&$entities) {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_caseTypes
  */
-function crac_civicrm_caseTypes(&$caseTypes) {
-  _crac_civix_civicrm_caseTypes($caseTypes);
+function crac_civicrm_caseTypes(&$caseTypes)
+{
+    _crac_civix_civicrm_caseTypes($caseTypes);
 }
 
 /**
@@ -154,8 +167,9 @@ function crac_civicrm_caseTypes(&$caseTypes) {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_angularModules
  */
-function crac_civicrm_angularModules(&$angularModules) {
-  _crac_civix_civicrm_angularModules($angularModules);
+function crac_civicrm_angularModules(&$angularModules)
+{
+    _crac_civix_civicrm_angularModules($angularModules);
 }
 
 /**
@@ -163,8 +177,9 @@ function crac_civicrm_angularModules(&$angularModules) {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_alterSettingsFolders
  */
-function crac_civicrm_alterSettingsFolders(&$metaDataFolders = NULL) {
-  _crac_civix_civicrm_alterSettingsFolders($metaDataFolders);
+function crac_civicrm_alterSettingsFolders(&$metaDataFolders = null)
+{
+    _crac_civix_civicrm_alterSettingsFolders($metaDataFolders);
 }
 
 /**
@@ -174,7 +189,8 @@ function crac_civicrm_alterSettingsFolders(&$metaDataFolders = NULL) {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_entityTypes
  */
-function crac_civicrm_entityTypes(&$entityTypes) {
-  _crac_civix_civicrm_entityTypes($entityTypes);
+function crac_civicrm_entityTypes(&$entityTypes)
+{
+    _crac_civix_civicrm_entityTypes($entityTypes);
 }
 

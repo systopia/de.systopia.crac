@@ -1,15 +1,15 @@
 /**------------------------------------------------------+
-| Concurrent Resource Access Control (CRAC)              |
-| Copyright (C) 2020 SYSTOPIA                            |
-+--------------------------------------------------------+
-| This program is released as free software under the    |
-| Affero GPL license. You can redistribute it and/or     |
-| modify it under the terms of this license which you    |
-| can read by viewing the included agpl.txt or online    |
-| at www.gnu.org/licenses/agpl.html. Removal of this     |
-| copyright header is strictly prohibited without        |
-| written permission from the original author(s).        |
-+-------------------------------------------------------*/
+ | Concurrent Resource Access Control (CRAC)              |
+ | Copyright (C) 2020 SYSTOPIA                            |
+ +--------------------------------------------------------+
+ | This program is released as free software under the    |
+ | Affero GPL license. You can redistribute it and/or     |
+ | modify it under the terms of this license which you    |
+ | can read by viewing the included agpl.txt or online    |
+ | at www.gnu.org/licenses/agpl.html. Removal of this     |
+ | copyright header is strictly prohibited without        |
+ | written permission from the original author(s).        |
+ +-------------------------------------------------------*/
 
 /**
  * the currently shown modal warning dialogue
@@ -58,19 +58,19 @@ function crac_mosaico_ping() {
                         mosaico_crac_dialogue = CRM.confirm({
                             title: CRM.vars.CracMosaicoMonitor.dialogue_title,
                             closeOnEscape: false, // disable 'escape' button
-                            open: function(event, ui) {
+                            open: function (event, ui) {
                                 // disable 'close' button
                                 cj(".ui-dialog-titlebar-close").hide();
                             },
                             resizable: false,
                             message: '<div class="crm-custom-image-popup">' + result.values.html_text + '</div>',
                             options: choices
-                        }).on('crmConfirm:check', function() {
+                        }).on('crmConfirm:check', function () {
                             // user picked 'Check Again' => close dialogue and run ping
                             mosaico_crac_dialogue = null;
                             crac_mosaico_ping();
 
-                        }).on('crmConfirm:abort', function() {
+                        }).on('crmConfirm:abort', function () {
                             // user picked 'Abort' => navigate back
                             if (window.history.length > 2) {
                                 window.history.back();
@@ -78,7 +78,7 @@ function crac_mosaico_ping() {
                                 window.location.href = CRM.url('civicrm/dashboard');
                             }
 
-                        }).on('crmConfirm:no', function() {
+                        }).on('crmConfirm:no', function () {
                             // user picked 'Ignore' => close dialogue and stop timer
                             mosaico_crac_dialogue = null;
                             clearInterval(mosaico_ping_loop);
@@ -86,7 +86,7 @@ function crac_mosaico_ping() {
                                 CRM.vars.CracMosaicoMonitor.ignore_text,
                                 CRM.vars.CracMosaicoMonitor.ignore_title,
                                 "warn"
-                                );
+                            );
                         });
                     }
                 }
@@ -94,7 +94,7 @@ function crac_mosaico_ping() {
     }
 }
 
-cj(document).ready(function() {
+cj(document).ready(function () {
     mosaico_ping_loop = setInterval(crac_mosaico_ping, CRM.vars.CracMosaicoMonitor.interval);
     crac_mosaico_ping();
 });

@@ -1,15 +1,15 @@
 /**------------------------------------------------------+
-| Concurrent Resource Access Control (CRAC)              |
-| Copyright (C) 2019 SYSTOPIA                            |
-+--------------------------------------------------------+
-| This program is released as free software under the    |
-| Affero GPL license. You can redistribute it and/or     |
-| modify it under the terms of this license which you    |
-| can read by viewing the included agpl.txt or online    |
-| at www.gnu.org/licenses/agpl.html. Removal of this     |
-| copyright header is strictly prohibited without        |
-| written permission from the original author(s).        |
-+-------------------------------------------------------*/
+ | Concurrent Resource Access Control (CRAC)              |
+ | Copyright (C) 2019 SYSTOPIA                            |
+ +--------------------------------------------------------+
+ | This program is released as free software under the    |
+ | Affero GPL license. You can redistribute it and/or     |
+ | modify it under the terms of this license which you    |
+ | can read by viewing the included agpl.txt or online    |
+ | at www.gnu.org/licenses/agpl.html. Removal of this     |
+ | copyright header is strictly prohibited without        |
+ | written permission from the original author(s).        |
+ +-------------------------------------------------------*/
 
 
 /**
@@ -24,10 +24,11 @@ function get_crac_resource() {
  * execute a resource ping and show a warning if there is an issue
  */
 var alert_dialogue = null;
+
 function crac_ping() {
     let resource = get_crac_resource();
     CRM.api3('Crac', 'ping', resource)
-        .done(function(result) {
+        .done(function (result) {
             if (result.count > 0) {
                 if (alert_dialogue) {
                     // how to update?
@@ -44,7 +45,7 @@ function crac_ping() {
         });
 }
 
-cj(document).ready(function() {
+cj(document).ready(function () {
     let resource = get_crac_resource();
     let ping_loop = setInterval(crac_ping, resource.interval);
     crac_ping();
