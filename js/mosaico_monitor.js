@@ -72,7 +72,7 @@ function crac_mosaico_ping() {
 
                         }).on('crmConfirm:abort', function () {
                             // user picked 'Abort' => navigate back
-                            if (window.history.length > 2) {
+                            if (window.history.length > 1) {
                                 window.history.back();
                             } else {
                                 window.location.href = CRM.url('civicrm/dashboard');
