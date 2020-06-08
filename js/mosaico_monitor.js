@@ -77,6 +77,10 @@ function crac_mosaico_ping() {
                             } else {
                                 window.location.href = CRM.url('civicrm/dashboard');
                             }
+                            // ... but keep ping going anyway, in case going back didn't work
+                            //  (e.g. if user aborted due to 'unsaved changes' warning)
+                            mosaico_crac_dialogue = null;
+                            crac_mosaico_ping();
 
                         }).on('crmConfirm:no', function () {
                             // user picked 'Ignore' => close dialogue and stop timer
