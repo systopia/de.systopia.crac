@@ -5,7 +5,7 @@ use CRM_Crac_ExtensionUtil as E;
 /**
  * Collection of upgrade steps.
  */
-class CRM_Crac_Upgrader extends CRM_Crac_Upgrader_Base
+class CRM_Crac_Upgrader extends CRM_Extension_Upgrader_Base
 {
 
     /**
