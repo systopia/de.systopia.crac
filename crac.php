@@ -25,10 +25,10 @@ use CRM_Crac_ExtensionUtil as E;
  */
 function crac_civicrm_alterAngular(&$angular)
 {
-    $angular_modules = $angular->getModules();
-    if (isset($angular_modules['crmMosaico'])) {
-        CRM_Crac_Monitor::injectMosaicoMailMonitor();
-    }
+//    $angular_modules = $angular->getModules();
+//    if (isset($angular_modules['crmMosaico'])) {
+//        CRM_Crac_Monitor::injectMosaicoMailMonitor();
+//    }
 }
 
 /**
@@ -70,6 +70,11 @@ function crac_civicrm_install()
     _crac_civix_civicrm_install();
 }
 
+function crac_civicrm_pageRun($page): void {
+    if (CRM_Crac_Monitor::mosaicoMonitorNeeded($page)){
+        CRM_Crac_Monitor::injectMosaicoMailMonitor();
+    }
+}
 /**
  * Implements hook_civicrm_enable().
  *

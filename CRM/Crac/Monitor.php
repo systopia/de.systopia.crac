@@ -19,6 +19,24 @@ use CRM_Crac_ExtensionUtil as E;
  */
 class CRM_Crac_Monitor
 {
+  /**
+   * Checks if we need to inject MosaicoMonitor JS
+   * Check is run against a list of Pgae Object Classes
+   *
+   * @param $page
+   * @return bool
+   */
+  public static function mosaicoMonitorNeeded($page)
+  {
+    // TODO are these all the ages we need?
+    $classNames = array('CRM_Mailing_Page_Browse', 'CRM_Afform_Page_AfformBase', 'Civi\Angular\Page\Main');
+    foreach ($classNames as $className) {
+        if (is_a($page, $className)) {
+            return true;
+        }
+    }
+    return false;
+  }
 
     /**
      * Inject Mosaico Mail monitor
