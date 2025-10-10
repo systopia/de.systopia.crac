@@ -20,8 +20,6 @@ use CRM_Crac_ExtensionUtil as E;
 
 
 
-}
-
 /**
  * Don't log CRAC data
  */
