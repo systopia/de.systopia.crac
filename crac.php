@@ -18,17 +18,8 @@ require_once 'crac.civix.php';
 use CRM_Crac_ExtensionUtil as E;
 
 
-/**
- * Inject angular based monitors
- *
- * @param $angular \Civi\Angular\Manager
- */
-function crac_civicrm_alterAngular(&$angular)
-{
-//    $angular_modules = $angular->getModules();
-//    if (isset($angular_modules['crmMosaico'])) {
-//        CRM_Crac_Monitor::injectMosaicoMailMonitor();
-//    }
+
+
 }
 
 /**

@@ -23,15 +23,15 @@
   <comments/>
   <civix>
     <namespace>CRM/Crac</namespace>
-    <format>23.02.1</format>
+    <format>25.01.1</format>
   </civix>
   <mixins>
     <mixin>menu-xml@1.0.0</mixin>
-    <mixin>smarty-v2@1.0.1</mixin>
+    <mixin>smarty-v2@1.0.3</mixin>
   </mixins>
   <classloader>
     <psr0 prefix="CRM_" path="."/>
     <psr4 prefix="Civi\" path="Civi"/>
   </classloader>
-  <upgrader>CRM_Crac_Upgrader</upgrader>
+  <upgrader>CiviMix\Schema\Crac\AutomaticUpgrader</upgrader>
 </extension>
